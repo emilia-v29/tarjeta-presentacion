@@ -1,10 +1,13 @@
 import { StyleSheet, ScrollView } from 'react-native';
 import Emi from './components/Presentacion.js';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 export default function App(){
   return(
-    <ScrollView>
-      <Emi/>
-    </ScrollView>
+    <SafeAreaProvider>
+      <ScrollView>
+        <Emi/>
+      </ScrollView>
+    </SafeAreaProvider>
   );
 }
