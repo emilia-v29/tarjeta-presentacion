@@ -1,4 +1,4 @@
-import { ScrollView, View, Text, StyleSheet, Linking, Image } from 'react-native';
+import { ScrollView, View, Text, StyleSheet, Linking, Image, Pressable, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function App() {
@@ -13,28 +13,36 @@ export default function App() {
             <Text>Fecha de nacimiento: 29/07/2008</Text>
             <Text>Edad: 17</Text>
             <Text>Ciudad: Las Varillas, Cba.</Text>
+            <Text>Número de celular: 3533-5880014</Text>
             <Text>Email: emiliavillalba29@gmail.com</Text>
             <Text>Email escolar: elvillalba@escuelasproa.edu.ar</Text>
-
-            <Text
-              style={styles.link}
-              onPress={() => Linking.openURL('https://wa.me/5493533580014')}
-            >
-              WhatsApp
-            </Text>
-
-            <Text
-              style={styles.link}
-              onPress={() => Linking.openURL('https://www.instagram.com/emi__villalba')}
-            >
-              Instagram
-            </Text>
           </View>
 
           <Image
             source={require('../assets/foto1.jpg')}
             style={styles.image}
           />
+
+
+          <Pressable
+            style={styles.button}
+
+            onPressIn={() =>
+          Alert.alert('onPressIn', 'Dedo apoyado')
+          }
+
+          onPressOut={() =>
+          Alert.alert('onPressOut', 'Dedo levantado')
+          }
+
+          onPress={() =>
+          Linking.openURL('https://www.instagram.com/emi__villalba')
+          }
+        >
+  <Text style={styles.buttonText}>
+    Ir a mi Instagram
+  </Text>
+</Pressable>
 
           <View style={styles.section}>
             <Text style={styles.title}>Estudios</Text>
@@ -123,11 +131,19 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 20,
   },
-  link: {
-    color: '#FAACBF',
-    textDecorationLine: 'underline',
-    marginTop: 5,
-  },
+button: {
+  backgroundColor: '#FAACBF',
+  padding: 14,
+  borderRadius: 8,
+  marginBottom: 20,
+},
+
+buttonText: {
+  color: '#fff',
+  textAlign: 'center',
+  fontWeight: 'bold',
+  fontSize: 16,
+},
   title: {
     fontSize: 18,
     fontWeight: 'bold',
